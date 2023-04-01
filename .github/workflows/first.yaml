@@ -30,8 +30,8 @@ jobs:
         run: terraform init
       - name: Terraform validate
         run: terraform validate
-      - name: Terraform plan
-        run: terraform plan
+     # - name: Terraform plan
+     #   run: terraform plan
      # - name: Terraform apply
      #   run: terraform apply
      # - name: Terraform destroy
