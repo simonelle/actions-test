@@ -17,7 +17,7 @@ jobs:
         run: |
            pwd
            ls -a
-  terraform workflow:
+  terraform-workflow:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
