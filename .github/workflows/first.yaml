@@ -1,7 +1,7 @@
 name: shell commands
 
 on: 
-  - push
+  - workflow_dispatch
 
 env:
   AWS_ACCESS_KEY_ID: ${{secrets.ACCESS_KEY}}
@@ -18,6 +18,10 @@ jobs:
            pwd
            ls -a
   terraform-workflow:
+        permissions: 
+          contents: write
+          issues: write
+          pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -32,9 +36,15 @@ jobs:
         run: terraform validate
      # - name: Terraform plan
      #   run: terraform plan
+       - name: releases
+           if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+         run: npx semantic-release
+         env: 
+            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
      # - name: Terraform apply
-     #   run: terraform apply
+         if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+     #   run: terraform apply --auto-approve
      # - name: Terraform destroy
-     #   run: terraform destroy
+     #   run: terraform destroy --auto-approve
            
         
