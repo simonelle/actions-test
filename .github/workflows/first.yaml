@@ -1,7 +1,8 @@
-name: shell commands
+
+name: release workflow
 
 on: 
-  - workflow_dispatch
+   workflow_dispatch:
 
 env:
   AWS_ACCESS_KEY_ID: ${{secrets.ACCESS_KEY}}
