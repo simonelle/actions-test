@@ -2,7 +2,7 @@
 name: release workflow
 
 on: 
- - push:
+  - push:
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY}}
@@ -26,13 +26,12 @@ jobs:
         run: terraform init
       - name: Terraform validate
         run: terraform validate
-    #  - name: Terraform plan
-    #    run: terraform plan
-     # - name: releases
-         # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        # run: npx semantic-release
-        # env: 
-        #   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Terraform plan
+        run: terraform plan
+      - name: releases
+        run: npx semantic-release
+        env: 
+           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
      # - name: Terraform apply
       #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
      #   run: terraform apply -auto-approve
