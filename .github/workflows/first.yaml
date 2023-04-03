@@ -2,7 +2,7 @@
 name: release workflow
 
 on: 
-  - push:
+  - push
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY}}
