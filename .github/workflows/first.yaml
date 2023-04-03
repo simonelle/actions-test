@@ -1,12 +1,11 @@
 
 name: release workflow
 
-on: 
-   workflow_dispatch:
+on: [workflow_dispatch]
 
 env:
-  AWS_ACCESS_KEY_ID: ${{secrets.ACCESS_KEY}}
-  AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+  AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY}}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
 
 jobs:
   run-shell-commands:
