@@ -17,7 +17,7 @@ terraform {
     required_providers {
         aws = {
             source = "hashicorp/aws"
-            versioversion = "~> 3.0"  #optional but recommended in productions
+            version = "~> 3.0"  #optional but recommended in productions
                     
       
     }
