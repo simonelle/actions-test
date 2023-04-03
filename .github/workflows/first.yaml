@@ -1,27 +1,19 @@
 
 name: release workflow
 
-on: [workflow_dispatch]
+on: 
+ - push:
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY}}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
 
 jobs:
-  run-shell-commands:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v1
-      - name: Multi-line string
-        run: |
-           pwd
-           ls -a
   terraform-workflow:
-        permissions: 
-          contents: write
-          issues: write
-          pull-requests: write
+    permissions: 
+      contents: write
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -37,14 +29,14 @@ jobs:
       - name: Terraform plan
         run: terraform plan
       - name: releases
-         # if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+         # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
          run: npx semantic-release
          env: 
            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
      # - name: Terraform apply
-      #   if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
-     #   run: terraform apply --auto-approve
+      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+     #   run: terraform apply -auto-approve
      # - name: Terraform destroy
-     #   run: terraform destroy --auto-approve
+     #   run: terraform destroy -auto-approve
            
         
