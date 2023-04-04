@@ -9,6 +9,6 @@ resource "aws_vpc" "myvpc" {
         Name = "class30"
         Teams = "DevOps"
         Environment = "dev"
-        Division = "HR"
+       
     }  
 }
