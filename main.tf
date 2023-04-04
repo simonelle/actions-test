@@ -12,20 +12,3 @@ resource "aws_vpc" "myvpc" {
         Division = "HR"
     }  
 }
-terraform {
-    required_version = "~> 1.0"
-    required_providers {
-        aws = {
-            source = "hashicorp/aws"
-            version = "~> 3.0"  #optional but recommended in productions
-                    
-      
-    }
-}
-backend "s3" {
-    bucket = "myclass30bucket"
-    key = "prod/terraform.tfstate"
-    region = "us-east-2"
-  
-}
-}
