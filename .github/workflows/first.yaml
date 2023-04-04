@@ -34,7 +34,7 @@ jobs:
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
      # - name: Terraform apply
-      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      #    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
      #   run: terraform apply -auto-approve
      # - name: Terraform destroy
      #   run: terraform destroy -auto-approve
